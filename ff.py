@@ -12,24 +12,22 @@ def isqrt(n):
     y = (x + n // x) // 2
   return x
 
-def fermat(n, verbose=True):
+def zfermat(n, verbose=True):
     a = isqrt(n)
     b2 = a*a - n
     b = isqrt(n)
     steps = 0
-    while b*b != b2:
+    while (n % a) != 0:
         a += 1
-        b2 = a*a - n
-        b = isqrt(b2)
         steps += 1
     print("steps", steps)
-    p=a+b
-    q=a-b
+    p = a
+    q = n // p
     return p, q
 
 psize = 16
 sk, pk, n = keygen(psize)
 message = b"A"
 msg = number.bytes_to_long(message)
-p, q = fermat(n)
+p, q = zfermat(n)
 print(p, q)
