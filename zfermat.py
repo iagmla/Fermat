@@ -2,8 +2,6 @@ from Crypto.Util import number
 import math
 from rsa import keygen
 
-# Breaks RSA with false keys
-
 def isqrt(n):
   x = n
   y = (x + n // x) // 2
